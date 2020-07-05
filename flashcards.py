@@ -1,5 +1,5 @@
-from flask import Flask
-from datetime import datetime
+from flask import Flask, render_template
+from model import db
 
 app = Flask(__name__)
 
@@ -8,16 +8,13 @@ counter = 0
 
 @app.route("/")
 def welcome():
-    return "Welcome to my Flash Cards application!"
+    return render_template(
+        "welcome.html",
+        message="Here's a message from the view.",
+    )
 
 
-@app.route("/date")
-def date():
-    return f"This page was served at {datetime.now()}"
-
-
-@app.route("/counter")
-def counter_view():
-    global counter
-    counter += 1
-    return f"This page was viewed {counter} times."
+@app.route("/card")
+def card_view():
+    card = db[0]
+    return render_template("card.html", card=card)
