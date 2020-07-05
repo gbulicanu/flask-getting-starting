@@ -15,9 +15,15 @@
             </a>
         </button>
         <button>
-            <a href="{{ url_for('card_view', index=index + 1) }}">
-                Next card
-            </a>
+            {% if index < max_index %}
+                <a href="{{ url_for('card_view', index=index + 1) }}">
+                    Next card
+                </a>
+            {% else %}
+                <a href="{{ url_for('card_view', index=0) }}">
+                    Start over
+                </a>
+            {% endif %}
         </button>
     </p>
 </body>
