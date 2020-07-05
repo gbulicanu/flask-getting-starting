@@ -9,7 +9,11 @@
     Question: {{ card.question }} <br>
     Answer:   {{ card.answer }}
     <p>
-        Question: Can you add a link to the welcome page here?
+        <button>
+            <a href="{{ url_for('welcome') }}">
+                Back to home
+            </a>
+        </button>
         <button>
             <a href="{{ url_for('card_view', index=index + 1) }}">
                 Next card
