@@ -10,7 +10,7 @@ counter = 0
 def welcome():
     return render_template(
         "welcome.html",
-        message="Here's a message from the view.",
+        cards=db,
     )
 
 
